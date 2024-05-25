@@ -14,15 +14,34 @@
     <p>
         <% messages.forEach((m)=> { %>
             <%= "From: " + m.sender %> <br>
-            <%= "To: " + m.receiver %> <br>
-            <%= "Message: " + m.message %> <br>
-            <%= "timestamp: " + m.timestamp %> <br>
+                <%= "To: " + m.receiver %> <br>
+                    <%= "Message: " + m.message %> <br>
 
-                <br /> <br />
-                <% }) %>
+                        <br /> <br />
+                        <% }) %>
 
     </p>
 
+
+    <!-- Include a form within a rendered view that allows for interaction with your RESTful API. -->
+    <form action="/api/messages" method="POST">
+        <label for="From">
+            From: <input type="text" name="sender" required>
+        </label>
+        <br />
+
+        <label for="To">
+            To: <input type="text " name="receiver" required>
+        </label>
+        <br />
+
+        <label for="From">
+            Message: <input type="text" name="message" required>
+        </label>
+        <br />
+
+        <input type="submit" value="Send Message">
+    </form>
 </body>
 
 </html>

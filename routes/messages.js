@@ -1,8 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const messages = require('../db/messages.js')
+const messages = require('../db/messages.js');
 
-
+router.use(express.json());
 
 router.get("/", (req, res, next) => {
 
@@ -31,8 +31,9 @@ router.get("/", (req, res, next) => {
 })
 
 // Create POST routes for data, as appropriate.
-router.post("/", (req, res) => {
-    if (req.body.userId && req.body.sender && req.body.message) {
+router.post("/", (req, res, next) => {
+    console.log(req.body)
+    if (req.body.sender && req.body.message) {
         const message = {
             id: messages[messages.length - 1].id + 1,
             userId: req.body.userId,
@@ -45,7 +46,7 @@ router.post("/", (req, res) => {
         messages.push(message);
         res.json(messages[messages.length - 1]);
     } else {
-        next(error(400, "Missing something"))
+        next()
     }
 
 })

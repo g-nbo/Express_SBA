@@ -35,8 +35,8 @@ app.use('/api/replies', repliesRouter);
 /**
  * Create and use at least two pieces of custom middleware:
  */
-app.use("/api", (req, res, next) => {
-    res.send("You made it to the API!")
+app.use("/new", (req, res, next) => {
+    res.send("You made it to the new part of the site!")
 })
 
 app.use("/secret", (req, res, next) => {

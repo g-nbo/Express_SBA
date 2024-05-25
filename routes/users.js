@@ -9,7 +9,6 @@ router.get("/", (req, res) => {
 })
 
 router.get("/display", (req, res) => {
-    console.log("made it to display users");
     res.render("users", { users } );
 })
 
