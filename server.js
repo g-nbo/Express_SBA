@@ -11,9 +11,14 @@ const usersRouter = require("./routes/users")
 const messageRouter = require("./routes/messages")
 const repliesRouter = require("./routes/replies")
 const error = require('./utilities/error.js');
+const bodyParser = require('body-parser')
+
 
 require("dotenv").config();
 const PORT = process.env.PORT;
+
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(express.json())
 
 // Use simple CSS to style the rendered views.
 app.use('/static', express.static(path.join(__dirname, 'public')))
@@ -28,9 +33,9 @@ app.use('/api/replies', repliesRouter);
 /**
  * Create and use at least two pieces of custom middleware:
  */
-app.use("/api", (req, res, next) => {
-    res.send("You made it to the API!")
-})
+// app.use("/api", (req, res, next) => {
+//     res.send("You made it to the API!")
+// })
 
 app.use("/secret", (req, res, next) => {
     res.send("You found a secret part of the website!");
