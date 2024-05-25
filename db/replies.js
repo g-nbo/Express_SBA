@@ -41,5 +41,5 @@ const replies = [
     }
   ]
 
-  module.exports = { replies }
+  module.exports = replies;
   
