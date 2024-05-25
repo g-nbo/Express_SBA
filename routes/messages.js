@@ -3,8 +3,10 @@ const router = express.Router();
 const messages = require('../db/messages.js')
 
 
+
 router.get("/", (req, res, next) => {
 
+    // At least one data category should allow for additional filtering through the use of query parameters.
     if(req.query.userId) {
         const newArr = []
 
@@ -28,7 +30,7 @@ router.get("/", (req, res, next) => {
     
 })
 
-// At least one data category should allow for client creation via a POST request.
+// Create POST routes for data, as appropriate.
 router.post("/", (req, res) => {
     if (req.body.userId && req.body.sender && req.body.message) {
         const message = {
@@ -48,7 +50,8 @@ router.post("/", (req, res) => {
 
 })
 
-// At least one data category should allow for client manipulation via a PATCH or PUT request.
+// Create PATCH or PUT routes for data, as appropriate. 
+// Include query parameters for data filtering, where appropriate.
 router.patch("/:id", (req, res, next) => {
     const message = messages.find((m, i) => {
         if(m.id == req.params.id) {
@@ -67,7 +70,7 @@ router.patch("/:id", (req, res, next) => {
 })
 
 
-// At least one data category should allow for client deletion via a DELETE request.
+// Create DELETE routes for data, as appropriate.
 router.delete('/:id', (req, res, next) => {
 
     const message = messages.find((m, i) => {
@@ -82,6 +85,10 @@ router.delete('/:id', (req, res, next) => {
     } else {
         next();
     }
+})
+
+router.get("/display", (req, res) => {
+    res.render("messages", { messages } );
 })
 
 module.exports = router;

@@ -1,4 +1,9 @@
 body {
     background-color: black;
     color: white;
+    font-size: 130%;
+
+    /* background-image: url("chat_bubbles.png");
+    background-repeat: no-repeat;
+    background-size: cover; */
 }

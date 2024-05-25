@@ -7,7 +7,9 @@ router.get("/", (req, res) => {
     res.send(replies);
 })
 
-
+router.get("/display", (req, res) => {
+    res.render("replies", { replies } );
+})
 
 
 

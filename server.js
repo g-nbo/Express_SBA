@@ -17,6 +17,8 @@ const bodyParser = require('body-parser')
 require("dotenv").config();
 const PORT = process.env.PORT;
 
+app.set("view engine", "ejs");
+
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.json())
 
@@ -33,9 +35,9 @@ app.use('/api/replies', repliesRouter);
 /**
  * Create and use at least two pieces of custom middleware:
  */
-// app.use("/api", (req, res, next) => {
-//     res.send("You made it to the API!")
-// })
+app.use("/api", (req, res, next) => {
+    res.send("You made it to the API!")
+})
 
 app.use("/secret", (req, res, next) => {
     res.send("You found a secret part of the website!");
@@ -44,6 +46,7 @@ app.use("/secret", (req, res, next) => {
 
 app.get("/", (req, res) => {
     console.log("base url is online");
+    // Create and render at least one view using a view template and template engine.
     res.render('base.ejs');
 })
 

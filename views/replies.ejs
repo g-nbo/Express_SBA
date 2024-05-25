@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+
+<body>
+    <h1>Replies</h1>
+
+    <p>
+        <% replies.forEach((r)=> { %>
+            <%= "From: " + r.sender %> <br>
+            <%= "To: " + r.receiver %> <br>
+            <%= "Reply: " + r.reply %> <br>
+            <%= "Timestamp: " + r.timestamp %> <br>
+
+                <br /> <br />
+                <% }) %>
+
+    </p>
+
+</body>
+
+</html>
