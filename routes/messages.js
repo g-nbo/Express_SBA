@@ -8,19 +8,7 @@ router.get("/", (req, res, next) => {
 
     // At least one data category should allow for additional filtering through the use of query parameters.
     if(req.query.userId) {
-        const newArr = []
-
-        messages.forEach(element => {
-            if(element.userId == req.query.userId) {
-                newArr.push(element)
-            }
-        })
-
-        if (newArr.length > 0) {
-            res.json(newArr);
-          } else {
-            res.send("Couldn't find that users messages")
-          }
+        res.json(messages.filter((m) => m.userId == req.query.userId))
     } else {
         res.send(messages)
     }
